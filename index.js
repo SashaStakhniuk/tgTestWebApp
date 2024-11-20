@@ -1,8 +1,9 @@
 // Ініціалізація WebApp
 const telegramWebApp = window.Telegram.WebApp;
 if (!telegramWebApp) {
-    return;
+    console.log("telegramWebApp is undefined");
 }
+
 console.log(telegramWebApp);
 updateTheme();
 telegramWebApp.expand(); // Розгорнути на весь екран
