@@ -1,7 +1,18 @@
 // Ініціалізація WebApp
-const tg = window.Telegram.WebApp;
-tg.expand(); // Розгорнути на весь екран
-document.getElementById('username').textContent = tg.initDataUnsafe?.user?.first_name || 'користувач';
+const telegramWebApp = window.Telegram.WebApp;
+if (!telegramWebApp) {
+    return;
+}
+console.log(telegramWebApp);
+updateTheme();
+telegramWebApp.expand(); // Розгорнути на весь екран
+document.getElementById('username').textContent = telegramWebApp.initDataUnsafe?.user?.first_name || 'користувач';
 
 // Закриття додатка
-document.getElementById('close').addEventListener('click', () => tg.close());
+document.getElementById('close').addEventListener('click', () => telegramWebApp.close());
+
+function updateTheme() {
+    const theme = telegramWebApp.themeParams;
+    document.body.style.backgroundColor = theme.bg_color || '#ffffff';
+    document.body.style.color = theme.text_color || '#000000';
+}
